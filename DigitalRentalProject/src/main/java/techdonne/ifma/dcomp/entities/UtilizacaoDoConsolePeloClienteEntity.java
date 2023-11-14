@@ -22,4 +22,8 @@ public @Data class UtilizacaoDoConsolePeloClienteEntity {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private ClienteEntity cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "console_id")
+    private ConsoleEntity console;
 }

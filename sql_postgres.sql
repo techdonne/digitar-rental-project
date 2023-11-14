@@ -10,7 +10,7 @@ drop table if exists plataforma cascade;
 
 create table plataforma (
 	id serial not null,
-	nome varchar(32), 
+	nome varchar(32) unique not null, 
 	primary key (id)
 );
 
@@ -60,6 +60,15 @@ create table item_locacao (
 	constraint fk_item_locacao_2 foreign key (locacao_id) references locacao(id)
 );
 
+drop table if exists console cascade;
+
+create table console (
+	id serial not null,
+	nome varchar(255) unique not null,
+	preco_por_hora decimal(9,2) not null,
+	primary key (id)
+);
+
 drop table if exists utilizacao_do_console_pelo_cliente cascade;
 
 create table utilizacao_do_console_pelo_cliente(
@@ -67,13 +76,30 @@ create table utilizacao_do_console_pelo_cliente(
 	inicio timestamp not null,
 	fim timestamp not null,
 	cliente_id int not null,
-	primary key (id, cliente_id),
+	console_id int not null,
+	primary key (id),
 	constraint fk_utilizacao_do_console_pelo_cliente_1 
-	foreign key (cliente_id) references cliente(id)
-	--constraint fk_item_locacao_2 foreign key (locacao_id) references locacao(id)
+	foreign key (cliente_id) references cliente(id),
+	constraint fk_utilizacao_do_console_pelo_cliente_2 
+	foreign key (console_id) references console(id)
 );
 
+drop table if exists acessorio cascade;
 
+create table acessorio(
+	id serial not null,
+	nome varchar(255) unique not null,
+	primary key (id)
+);
+
+drop table if exists acessorio_console cascade;
+
+create table acessorio_console(
+	console_id integer not null,
+	acessorio_id integer not null,
+	constraint fk_acessorio_console_1 foreign key (acessorio_id) references acessorio(id) on delete cascade,
+	constraint fk_acessorio_console_2 foreign key (console_id) references console(id)
+);
 
 
 
