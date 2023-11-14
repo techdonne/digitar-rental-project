@@ -18,6 +18,10 @@ public @Data @AllArgsConstructor class LocacaoEntity {
     @Temporal(TemporalType.DATE)
     private LocalDate data;
 
+    @ManyToOne()
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private ClienteEntity cliente;
+
     @PrePersist
     private void setData(){
         this.data = LocalDate.now();
