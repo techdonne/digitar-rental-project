@@ -1,10 +1,7 @@
 package techdonne.ifma.dcomp.repositories;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import techdonne.ifma.dcomp.entities.JogoEntity;
-
 import java.util.Objects;
 
 public class JogoRepository {

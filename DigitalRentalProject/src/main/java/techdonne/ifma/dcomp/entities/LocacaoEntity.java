@@ -3,19 +3,24 @@ package techdonne.ifma.dcomp.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDate;
 
 @Entity
-@Builder
-@AllArgsConstructor
+@Table(name = "locacao")
 @NoArgsConstructor
+@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name = "plataforma")
-public @Data class PlataformaEntity {
+public @Data @AllArgsConstructor class LocacaoEntity {
     @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nome;
+    @Temporal(TemporalType.DATE)
+    private LocalDate data;
+
+    @PrePersist
+    private void setData(){
+        this.data = LocalDate.now();
+    }
+
 }

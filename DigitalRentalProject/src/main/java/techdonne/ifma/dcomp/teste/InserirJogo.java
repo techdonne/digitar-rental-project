@@ -32,7 +32,7 @@ public class InserirJogo {
                 build();*/
 
         manager.getTransaction().begin();
-        
+
         jogoRepository = new JogoRepository(manager);
 
         jogoRepository.save(jogo);

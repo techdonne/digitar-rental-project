@@ -1,7 +1,7 @@
 drop table if exists jogo cascade;
 
 create table jogo (
-	id integer not null,
+	id serial not null,
 	titulo varchar(255), 
 	primary key (id)
 );
@@ -9,7 +9,7 @@ create table jogo (
 drop table if exists plataforma cascade;
 
 create table plataforma (
-	id integer not null,
+	id serial not null,
 	nome varchar(32), 
 	primary key (id)
 );
@@ -25,10 +25,26 @@ create table jogo_plataforma (
 	constraint fk_jogo_platarforma_2 foreign key (plataforma_id) references plataforma(id)
 );
 
+drop table if exists locacao cascade;
 
+create table locacao (
+	id serial not null,
+	data timestamp not null default now(),
+	primary key (id)
+);
 
+drop table if exists item_locacao cascade;
 
-
+create table item_locacao (
+	jogo_id integer not null,
+	plataforma_id integer not null,
+	locacao_id integer not null,
+	dias integer,
+	quantidade integer,
+	primary key (jogo_id, plataforma_id, locacao_id),
+	constraint fk_item_locacao_1 foreign key (jogo_id, plataforma_id) references jogo_plataforma(jogo_id, plataforma_id),
+	constraint fk_item_locacao_2 foreign key (locacao_id) references locacao(id)
+);
 
 
 
