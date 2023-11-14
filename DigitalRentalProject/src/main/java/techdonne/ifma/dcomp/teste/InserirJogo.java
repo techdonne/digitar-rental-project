@@ -19,7 +19,7 @@ public class InserirJogo {
         factory = Persistence.createEntityManagerFactory("digital_rental_project");
         manager = factory.createEntityManager();
 
-        JogoEntity jogo = JogoEntity.builder().titulo("GOD OF WAR").build();
+        //JogoEntity jogo = JogoEntity.builder().titulo("GOD OF WAR").build();
 
         /*PlataformaEntity plataforma = PlataformaEntity.builder().nome("Xbox").build();
 
@@ -31,14 +31,14 @@ public class InserirJogo {
                 .precoDiario(new BigDecimal(1000)).
                 build();*/
 
-        manager.getTransaction().begin();
+        //manager.getTransaction().begin();
 
-        jogoRepository = new JogoRepository(manager);
+        //jogoRepository = new JogoRepository(manager);
 
-        jogoRepository.save(jogo);
+        //jogoRepository.save(jogo);
 
 
-        manager.getTransaction().commit();
+        //manager.getTransaction().commit();
 
         manager.close();
 

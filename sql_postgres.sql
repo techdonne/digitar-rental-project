@@ -60,7 +60,18 @@ create table item_locacao (
 	constraint fk_item_locacao_2 foreign key (locacao_id) references locacao(id)
 );
 
+drop table if exists utilizacao_do_console_pelo_cliente cascade;
 
+create table utilizacao_do_console_pelo_cliente(
+	id serial not null,
+	inicio timestamp not null,
+	fim timestamp not null,
+	cliente_id int not null,
+	primary key (id, cliente_id),
+	constraint fk_utilizacao_do_console_pelo_cliente_1 
+	foreign key (cliente_id) references cliente(id)
+	--constraint fk_item_locacao_2 foreign key (locacao_id) references locacao(id)
+);
 
 
 

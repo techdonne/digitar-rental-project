@@ -15,7 +15,7 @@ public @Data @AllArgsConstructor class LocacaoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE) @Getter
     private LocalDate data;
 
     @ManyToOne()
