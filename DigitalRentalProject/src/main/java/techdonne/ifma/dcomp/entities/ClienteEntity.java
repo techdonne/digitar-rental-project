@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public @Data class ClienteEntity {
+public @Data class ClienteEntity implements EntidadeBaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
