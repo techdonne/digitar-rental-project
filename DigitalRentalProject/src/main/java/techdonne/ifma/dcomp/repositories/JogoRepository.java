@@ -5,18 +5,16 @@ import techdonne.ifma.dcomp.entities.JogoEntity;
 import java.util.Objects;
 
 public class JogoRepository {
-    private final EntityManager manager;
-
-    public JogoRepository(EntityManager manager){
-        this.manager = manager;
+    private final DAOGenerico<JogoEntity> daoGenerico;
+    public JogoRepository(EntityManager manager) {
+        this.daoGenerico = new DAOGenerico<>(manager);
     }
 
-    public JogoEntity save(JogoEntity jogoEntity){
-        if (Objects.isNull(jogoEntity.getId())){
-            this.manager.persist(jogoEntity);
-        }else{
-            jogoEntity = this.manager.merge(jogoEntity);
-        }
-        return jogoEntity;
+    public JogoEntity salvar(JogoEntity jogoEntity){
+        return this.daoGenerico.salvar(jogoEntity);
+    }
+
+    public JogoEntity buscarPorId(Class<JogoEntity> classe, Integer id){
+        return this.daoGenerico.buscarPorId(classe, id);
     }
 }

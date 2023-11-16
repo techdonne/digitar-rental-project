@@ -4,12 +4,10 @@ import jakarta.persistence.EntityManager;
 import techdonne.ifma.dcomp.entities.ClienteEntity;
 
 public class ClienteRepository {
-    private final EntityManager entityManager;
-    private DAOGenerico<ClienteEntity> daoGenerico;
+    private final DAOGenerico<ClienteEntity> daoGenerico;
 
     public ClienteRepository(EntityManager entityManager) {
-        this.entityManager = entityManager;
-        this.daoGenerico = new DAOGenerico<ClienteEntity>(this.entityManager);
+        this.daoGenerico = new DAOGenerico<ClienteEntity>(entityManager);
     }
 
     public ClienteEntity salvar(ClienteEntity cliente){
