@@ -1,4 +1,4 @@
-package techdonne.ifma.dcomp.teste;
+package techdonne.ifma.dcomp.teste.cliente;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -6,7 +6,7 @@ import jakarta.persistence.Persistence;
 import techdonne.ifma.dcomp.entities.ClienteEntity;
 import techdonne.ifma.dcomp.repositories.ClienteRepository;
 
-public class ClienteTeste {
+public class CadastroDeClientes {
     private static EntityManagerFactory entityManagerFactory;
     private static EntityManager entityManager;
     private static ClienteEntity cliente;
