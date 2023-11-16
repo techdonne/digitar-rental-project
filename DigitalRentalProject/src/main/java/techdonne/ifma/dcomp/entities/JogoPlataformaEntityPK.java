@@ -5,9 +5,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Embeddable
 @AllArgsConstructor
+@NoArgsConstructor
 public @Data class JogoPlataformaEntityPK{
     @ManyToOne
     @JoinColumn(name = "jogo_id")
