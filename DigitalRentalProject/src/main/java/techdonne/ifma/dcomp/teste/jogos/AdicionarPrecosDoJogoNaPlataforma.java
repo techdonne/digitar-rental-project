@@ -23,7 +23,7 @@ public class AdicionarPrecosDoJogoNaPlataforma {
         PlataformaRepository plataformaRepository = new PlataformaRepository(manager);
         JogoRepository jogoRepository = new JogoRepository(manager);
 
-        JogoEntity jogo = jogoRepository.buscarPorId(JogoEntity.class, 1);
+        JogoEntity jogo = jogoRepository.buscarPorId(1);
 
         PlataformaEntity plataforma1 = plataformaRepository.buscarPorId(PlataformaEntity.class, 1);
         PlataformaEntity plataforma2 = plataformaRepository.buscarPorId(PlataformaEntity.class, 2);

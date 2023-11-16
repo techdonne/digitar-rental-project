@@ -111,6 +111,3 @@ create table acessorio_console(
 
 
 
-
-
-

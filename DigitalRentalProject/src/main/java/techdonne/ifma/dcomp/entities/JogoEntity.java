@@ -12,6 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
 public class JogoEntity implements EntidadeBaseEntity{
     @EqualsAndHashCode.Include
     @Id

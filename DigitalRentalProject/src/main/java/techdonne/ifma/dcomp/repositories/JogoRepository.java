@@ -2,6 +2,8 @@ package techdonne.ifma.dcomp.repositories;
 
 import jakarta.persistence.EntityManager;
 import techdonne.ifma.dcomp.entities.JogoEntity;
+
+import java.util.List;
 import java.util.Objects;
 
 public class JogoRepository {
@@ -14,7 +16,14 @@ public class JogoRepository {
         return this.daoGenerico.salvar(jogoEntity);
     }
 
-    public JogoEntity buscarPorId(Class<JogoEntity> classe, Integer id){
-        return this.daoGenerico.buscarPorId(classe, id);
+    public JogoEntity buscarPorId(Integer id){
+        return this.daoGenerico.buscarPorId(JogoEntity.class, id);
+    }
+
+    public JogoEntity buscaPor(String titulo) {
+        return this.daoGenerico.getEntidadeManager().createQuery("from jogo " +
+                        "where upper(titulo) like :titulo", JogoEntity.class)
+                .setParameter("titulo", titulo.toUpperCase() + "%")
+                .getResultList().get(0);
     }
 }

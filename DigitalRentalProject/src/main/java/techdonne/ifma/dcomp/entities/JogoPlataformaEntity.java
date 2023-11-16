@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class JogoPlataformaEntity {
     @EqualsAndHashCode.Include
-    @EmbeddedId
+    @EmbeddedId @Getter
     private JogoPlataformaEntityPK id = new JogoPlataformaEntityPK();
     @Getter @Column(name="preco_diario") @Setter
     private BigDecimal precoDiario;
