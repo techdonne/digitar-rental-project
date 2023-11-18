@@ -5,23 +5,20 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import techdonne.ifma.dcomp.entities.ClienteEntity;
 import techdonne.ifma.dcomp.repositories.ClienteRepository;
+import techdonne.ifma.dcomp.util.EMFactory;
 
 public class CadastroDeClientes {
-    private static EntityManagerFactory entityManagerFactory;
-    private static EntityManager entityManager;
-    private static ClienteEntity cliente;
-    private static ClienteRepository repository;
+    private static final EMFactory factory = new EMFactory();
     public static void main(String[] args) {
         //Questão 1: cadastrar cliente
 
-        entityManagerFactory = Persistence.createEntityManagerFactory("digital_rental_project");
-        entityManager = entityManagerFactory.createEntityManager();
+        EntityManager entityManager = factory.getEntityManger();
 
-        cliente = new ClienteEntity(null, "Daniel Araújo", "daniel@dominio.com", "98 98989-9831", "1234");
+        ClienteEntity cliente = new ClienteEntity(null, "Daniel Araújo", "daniel@dominio.com", "98 98989-9831", "1234");
 
         entityManager.getTransaction().begin();
 
-        repository = new ClienteRepository(entityManager);
+        ClienteRepository repository = new ClienteRepository(entityManager);
 
         repository.salvar(cliente);
 
@@ -29,7 +26,7 @@ public class CadastroDeClientes {
 
         entityManager.close();
 
-        entityManagerFactory.close();
+        factory.close();
 
     }
 }

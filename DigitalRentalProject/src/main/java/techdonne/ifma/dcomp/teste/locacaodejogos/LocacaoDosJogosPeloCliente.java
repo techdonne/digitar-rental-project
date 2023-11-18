@@ -7,23 +7,24 @@ import techdonne.ifma.dcomp.entities.*;
 import techdonne.ifma.dcomp.repositories.ClienteRepository;
 import techdonne.ifma.dcomp.repositories.JogoRepository;
 import techdonne.ifma.dcomp.repositories.LocacaoRepository;
+import techdonne.ifma.dcomp.util.EMFactory;
 
 import java.util.List;
 
 public class LocacaoDosJogosPeloCliente {
+    public static final EMFactory factory = new EMFactory();
     public static void main(String[] args) {
-        try {
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("digital_rental_project");
-            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            EntityManager entityManager = factory.getEntityManger();
 
             entityManager.getTransaction().begin();
 
             ClienteRepository clienteRepository = new ClienteRepository(entityManager);
             JogoRepository jogoRepository = new JogoRepository(entityManager);
             LocacaoRepository locacaoRepository = new LocacaoRepository(entityManager);
+
             //buscando Cliente com ID = 1
             ClienteEntity cliente = clienteRepository.buscarPorId(1);
-            System.out.println(cliente);
+
             String nomeDoJogo = "god of war";
             String nomeDaPlataforma  = "Xbox";
 
@@ -57,10 +58,9 @@ public class LocacaoDosJogosPeloCliente {
 
             entityManager.getTransaction().commit();
 
+            System.out.println("O valor da locação é = " + locacaoEntity.preco_total_da_locacao().doubleValue());
+
             entityManager.close();
-            entityManagerFactory.close();
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+            factory.close();
     }
 }

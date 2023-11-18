@@ -9,14 +9,15 @@ import techdonne.ifma.dcomp.entities.JogoPlataformaEntityPK;
 import techdonne.ifma.dcomp.entities.PlataformaEntity;
 import techdonne.ifma.dcomp.repositories.JogoRepository;
 import techdonne.ifma.dcomp.repositories.PlataformaRepository;
+import techdonne.ifma.dcomp.util.EMFactory;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
 
 public class CadastroDeJogos {
+    public static final EMFactory factory = new EMFactory();
     public static void main(String[] args) {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("digital_rental_project");
-        EntityManager manager = factory.createEntityManager();
+        EntityManager manager = factory.getEntityManger();
         //criando o jogo
         JogoEntity jogo = new JogoEntity(null , "GOD OF WAR", new HashSet<>());
 
