@@ -29,7 +29,7 @@ public class LocacaoDosJogosPeloCliente {
             String nomeDaPlataforma  = "Xbox";
 
             //O cliente decide alocar o jogo GOD OF WAR
-            JogoEntity jogo = jogoRepository.buscarPorId(1);
+            JogoEntity jogo = jogoRepository.buscaPor(nomeDoJogo);
 
             //Vamos criar a Locacao e vincular ao cliente com ID = 1
             LocacaoEntity locacaoEntity = new LocacaoEntity();

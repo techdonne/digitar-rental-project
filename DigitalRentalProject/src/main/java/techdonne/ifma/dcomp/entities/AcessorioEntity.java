@@ -13,11 +13,9 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AcessorioEntity {
+public class AcessorioEntity implements EntidadeBaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    @ManyToMany(mappedBy = "acessorios", cascade = CascadeType.ALL)
-    private Collection<ConsoleEntity> consoles;
 }

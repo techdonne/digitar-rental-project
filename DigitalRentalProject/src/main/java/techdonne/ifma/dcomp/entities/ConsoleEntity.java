@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "console")
@@ -22,9 +23,9 @@ public @Data class ConsoleEntity {
     @Column(name="preco_por_hora")
     private BigDecimal precoPorHora;
 
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "acessorio_console",
                 joinColumns = @JoinColumn(name="console_id"),
                 inverseJoinColumns = @JoinColumn(name = "acessorio_id"))
-    private Collection<AcessorioEntity> acessorios;
+    private Set<AcessorioEntity> acessorios;
 }
