@@ -14,7 +14,7 @@ public class CadastroDeClientes {
 
         EntityManager entityManager = factory.getEntityManger();
 
-        ClienteEntity cliente = new ClienteEntity(null, "Daniel Araújo", "daniel@dominio.com", "98 98989-9831", "1234");
+        ClienteEntity cliente = new ClienteEntity(null, "JOÃO", "JOAO@dominio.com", "98 98989-9831", "1234");
 
         entityManager.getTransaction().begin();
 

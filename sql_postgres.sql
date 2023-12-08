@@ -97,8 +97,8 @@ drop table if exists acessorio_console cascade;
 create table acessorio_console(
 	console_id integer not null,
 	acessorio_id integer not null,
-	constraint fk_acessorio_console_1 foreign key (acessorio_id) references acessorio(id) on delete cascade,
-	constraint fk_acessorio_console_2 foreign key (console_id) references console(id)
+	constraint fk_acessorio_console_1 foreign key (acessorio_id) references acessorio(id),
+	constraint fk_acessorio_console_2 foreign key (console_id) references console(id) on delete cascade
 );
 
 
